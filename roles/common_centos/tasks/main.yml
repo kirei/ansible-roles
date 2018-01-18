@@ -1,0 +1,14 @@
+---
+
+- include_tasks: packages.yml
+- include_tasks: sudo.yml
+- include_tasks: users.yml
+- include_tasks: selinux.yml
+- include_tasks: firewall.yml
+- include_tasks: ssh.yml
+- include_tasks: syslog.yml
+- include_tasks: ntp.yml
+- include_tasks: mail.yml
+- include_tasks: yum.yml
+  when: yum is defined
+- include_tasks: audit.yml

@@ -1,0 +1,4 @@
+-a always,exit -F arch=b64 -S fork -S execve -S kexec_load -S vfork -k exec
+-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change
+-a always,exit -F arch=b64 -S clock_settime -k time-change
+-a always,exit -F arch=b64 -S sethostname -S setdomainname -k system-locale

@@ -1,0 +1,7 @@
+---
+
+- name: install sudoers
+  copy: src=sudoers dest=/etc/sudoers mode=440
+
+- name: create sudo configuration
+  template: src=sudo/nopasswd dest=/etc/sudoers.d/100_nopasswd mode=400

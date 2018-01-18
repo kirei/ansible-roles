@@ -1,0 +1,20 @@
+---
+
+- name: set timezone
+  file: src="../usr/share/zoneinfo/{{ntp.timezone}}" dest="/etc/localtime" state=link
+  when: ntp.timezone is defined
+
+- name: install NTP packages
+  yum: name={{ item }} state=installed
+  with_items:
+   - chrony
+  when: ntp.servers is defined
+
+- name: configure NTP
+  template: src=chrony.conf dest=/etc/chrony.conf mode=444
+  notify: restart chrony
+  when: ntp.servers is defined
+
+- name: start NTP
+  service: name=chronyd state=started enabled=yes
+  when: ntp.servers is defined

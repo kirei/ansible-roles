@@ -1,0 +1,10 @@
+---
+
+- name: install yum-cron
+  yum: name=yum-cron state=installed
+
+- name: configure yum-cron
+  template: src="yum/yum-cron.conf" dest="/etc/yum/yum-cron.conf" mode=444
+
+- name: start yum-cron
+  service: name=yum-cron state=started enabled=yes

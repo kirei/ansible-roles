@@ -1,0 +1,27 @@
+---
+
+- stat: path="/etc/localtime"
+  register: localtime
+
+- name: set timezone
+  file: src="../usr/share/zoneinfo/{{ntp.timezone}}" dest="/etc/localtime" state=link
+  when: ntp.timezone is defined and (localtime.stat.islnk is defined and localtime.stat.islnk)
+
+- name: set timezone
+  file: src="../usr/share/zoneinfo/{{ntp.timezone}}" dest="/etc/localtime" state=file
+  when: ntp.timezone is defined and (localtime.stat.islnk is defined and not localtime.stat.islnk)
+
+- name: install NTP packages
+  apt: name={{ item }} state=installed
+  with_items:
+   - openntpd
+  when: ntp.servers is defined
+
+- name: configure NTP
+  template: src=openntpd/ntpd.conf dest=/etc/openntpd/ntpd.conf mode=444
+  notify: restart openntpd
+  when: ntp.servers is defined
+
+- name: start NTP
+  service: name=openntpd state=started enabled=yes
+  when: ntp.servers is defined

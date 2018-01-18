@@ -1,0 +1,11 @@
+-w /etc/group -p wa -k identity
+-w /etc/passwd -p wa -k identity
+-w /etc/shadow -p wa -k identity
+-w /etc/sudoers -p wa -k identity
+-w /var/run/utmp -p wa -k session
+-w /var/log/wtmp -p wa -k session
+-w /var/log/btmp -p wa -k session
+-w /etc/selinux/ -p wa -k MAC-policy
+-w /etc/apparmor -p wa -k identity
+-w /etc/apparmor.d/ -p wa -k identity
+-w /etc/audit/ -p wa -k identity

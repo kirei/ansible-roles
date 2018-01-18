@@ -1,0 +1,16 @@
+---
+
+- name: install firewalld
+  yum: name={{ item }} state=installed
+  with_items:
+   - firewalld
+   - python-firewall
+
+- name: start firewalld
+  service: name=firewalld state=started enabled=yes
+
+- firewalld:
+    service: ssh
+    permanent: true
+    state: enabled
+  notify: reload firewalld

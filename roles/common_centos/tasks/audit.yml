@@ -1,0 +1,16 @@
+---
+
+- name: configure auditd 
+  copy: src=audit/{{item}} dest=/etc/audit/rules.d/{{item}} mode=444
+  with_items:
+   - files.rules
+   - syscalls.rules  
+  notify:
+  - regenerate auditd rules
+  - reload auditd
+
+- name: configure audispd
+  template: src=audisp/plugins.d/syslog.conf dest=/etc/audisp/plugins.d/syslog.conf mode=440
+  notify:
+  - reload auditd
+  when: audisp is defined

@@ -1,0 +1,26 @@
+#users: 
+#  - name: XXX
+#    gecos: XXX
+#    groups: sudo
+#    password: XXX
+#    shell: /bin/bash
+#    authorized_keys:
+#      - XXX
+
+#sudo:
+#  nopasswd:
+#    - xxx
+
+#ntp:
+#  timezone: Europe/Stockholm
+#  servers:
+#    - ntp.se
+
+#rsyslog:
+#  destinations:
+#    - address: syslog.example.com
+#      protocol: udp
+
+#postfix:
+#  myorigin: example.com
+#  relayhost: mail.example.com

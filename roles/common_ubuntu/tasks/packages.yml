@@ -1,0 +1,9 @@
+---
+
+- name: install common packages
+  apt: name={{ item }} state=installed
+  with_items:
+   - net-tools
+   - telnet
+   - tcpdump
+   - vim

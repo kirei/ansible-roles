@@ -1,0 +1,21 @@
+Protocol 2
+
+SyslogFacility AUTH
+LogLevel VERBOSE
+
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+GSSAPIAuthentication no
+GSSAPICleanupCredentials no
+
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+HostKey /etc/ssh/ssh_host_rsa_key
+
+UsePAM yes
+
+PermitRootLogin without-password
+
+Subsystem sftp internal-sftp
+
+AcceptEnv LANG LC_*

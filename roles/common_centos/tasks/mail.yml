@@ -1,0 +1,17 @@
+---
+
+- name: install mail packages
+  yum: name={{ item }} state=installed
+  with_items:
+   - mailx
+
+- name: install mail packages
+  yum: name={{ item }} state=installed
+  with_items:
+   - postfix
+  when: postfix is defined
+
+- name: install postfix config
+  template: src=postfix/main.cf dest=/etc/postfix/main.cf mode=444
+  notify: reload postfix
+  when: postfix is defined

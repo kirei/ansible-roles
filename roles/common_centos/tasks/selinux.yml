@@ -1,0 +1,38 @@
+---
+
+- name: install SELinux packages
+  yum: name={{ item }} state=installed
+  with_items:
+   - policycoreutils-python
+
+- name: enable SELinux
+  selinux:
+    policy: targeted
+    state: enforcing
+  when: selinux.enforcing is not defined or (selinux.enforcing is defined and selinux.enforcing)
+
+- name: disable SELinux
+  selinux:
+    policy: targeted
+    state: permissive
+  when: selinux.enforcing is defined and not selinux.enforcing
+
+- name: set SELinux staff_exec_content to false
+  seboolean:
+    name: staff_exec_content
+    state: yes
+    persistent: yes
+  when: selinux.staff_exec_content is defined and selinux.staff_exec_content
+
+- name: set SELinux staff_exec_content to false
+  seboolean:
+    name: staff_exec_content
+    state: no
+    persistent: yes
+  when: selinux.staff_exec_content is defined and not selinux.staff_exec_content
+
+- name: set SELinux user for managed users 
+  shell: semanage login -a -s "{{item.seuser}}" -r s0-s0:c0.c1023 "{{item.name}}"
+  with_items:
+    - "{{ users }}"
+  when: selinux.users is defined and selinux.users

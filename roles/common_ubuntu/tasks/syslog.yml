@@ -1,0 +1,6 @@
+---
+
+- name: configure rsyslogd
+  template: src="rsyslog.d/client.conf" dest="/etc/rsyslog.d/client.conf" mode=444
+  notify: restart rsyslogd
+  when: rsyslog is defined

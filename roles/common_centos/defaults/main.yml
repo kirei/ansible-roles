@@ -1,0 +1,41 @@
+#selinux:
+#  enforcing: True
+#  users: True
+#  staff_exec_content: False
+
+#users: 
+#  - name: XXX
+#    gecos: XXX
+#    groups: sudo
+#    seuser: staff_u
+#    password: XXX
+#    shell: /bin/bash
+#    authorized_keys:
+#      - XXX
+
+#sudo:
+#  nopasswd:
+#    - xxx
+
+#ntp:
+#  timezone: Europe/Stockholm
+#  servers:
+#    - ntp.se
+
+#yum:
+#  cron:
+#    update_cmd: security
+#    email_from: root@example.com
+#    email_to: root@example.com
+
+#rsyslog:
+#  destinations:
+#    - address: syslog.example.com
+#      protocol: udp
+
+#audisp:
+#  facility: LOG_LOCALx
+
+#postfix:
+#  myorigin: example.com
+#  relayhost: mail.example.com

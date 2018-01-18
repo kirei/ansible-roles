@@ -1,0 +1,3 @@
+{% for user in sudo.nopasswd %}
+{{user}} ALL=(ALL) TYPE=unconfined_t ROLE=unconfined_r NOPASSWD: ALL
+{% endfor %}

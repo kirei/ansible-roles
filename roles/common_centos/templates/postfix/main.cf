@@ -1,0 +1,13 @@
+# postfix main.cf
+
+myorigin = {{postfix.myorigin}}
+{% if postfix.relayhost is defined %}
+relayhost = [{{postfix.relayhost}}]
+{% endif %}
+inet_interfaces = loopback-only
+local_transport = error:local delivery is disabled
+
+smtp_tls_CAfile = /etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+smtp_tls_loglevel = 1
+smtp_tls_security_level = may
+smtp_tls_note_starttls_offer = yes
