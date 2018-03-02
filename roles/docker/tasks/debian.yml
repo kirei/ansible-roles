@@ -1,0 +1,36 @@
+---
+
+- name: Install dependencies
+  apt: name={{ item }} state=installed
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg2
+    - software-properties-common
+
+- name: Add GPG keyring
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+
+- name: Add repository
+  copy:
+    content: |
+      deb [arch=armhf] https://download.docker.com/linux/debian stretch stable
+    dest: /etc/apt/sources.list.d/docker.list
+  when: ansible_architecture == 'armhf'
+
+- name: Add repository
+  copy:
+    content: |
+      deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+    dest: /etc/apt/sources.list.d/docker.list
+  when: ansible_architecture == "x86_64"
+
+- name: Install Docker CE
+  apt: name={{ item }} state=installed update_cache=yes
+  with_items:
+    - docker-ce
+
+- name: Enable and start Docker
+  service: name=docker state=started enabled=yes
