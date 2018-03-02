@@ -14,6 +14,7 @@
 #      - XXX
 
 #sudo:
+#  rootpw: True
 #  nopasswd:
 #    - xxx
 

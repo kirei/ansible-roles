@@ -85,12 +85,13 @@ Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY
 
 Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
 
+{% if sudo.rootpw is defined and sudo.rootpw %}
 #
 # Require root's password
 #
 Defaults    rootpw
 
-
+{% endif %}
 ## Next comes the main part: which users can run what software on 
 ## which machines (the sudoers file can be shared between multiple
 ## systems).
