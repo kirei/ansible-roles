@@ -8,7 +8,7 @@
 - name: remove default users
   user: name="{{ item }}" state=absent
   with_items:
-    - ubuntu
+    - centos
 
 - name: install authorized keys
   authorized_key: user="{{ item.0.name }}" key="{{ item.1 }}"

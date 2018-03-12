@@ -4,6 +4,7 @@
   yum: name={{ item }} state=installed
   with_items:
    - net-tools
-   - epel-release
+   - telnet
    - tcpdump
    - vim-enhanced
+   - epel-release
