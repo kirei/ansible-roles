@@ -4,14 +4,17 @@
   user: name="{{ item.name }}" comment="{{ item.gecos }}" groups="{{ item.groups }}"
   with_items:
     - "{{ users }}"
+  when: users is defined
 
 - name: remove default users
   user: name="{{ item }}" state=absent
   with_items:
-    - ubuntu
+    - "{{ users_default_remove }}"
+  when: users_default_remove is defined
 
 - name: install authorized keys
   authorized_key: user="{{ item.0.name }}" key="{{ item.1 }}"
   with_subelements:
     - "{{ users }}"
     - authorized_keys
+  when: users is defined

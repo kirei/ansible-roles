@@ -7,6 +7,9 @@
 #    authorized_keys:
 #      - XXX
 
+#users_default_remove:
+#  - ubuntu
+
 #sudo:
 #  rootpw: True
 #  nopasswd:

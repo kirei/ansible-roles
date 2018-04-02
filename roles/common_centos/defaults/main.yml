@@ -13,6 +13,9 @@
 #    authorized_keys:
 #      - XXX
 
+#users_default_remove:
+#  - centos
+
 #sudo:
 #  rootpw: True
 #  nopasswd:
