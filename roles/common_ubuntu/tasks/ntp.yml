@@ -12,7 +12,7 @@
   when: ntp.timezone is defined and (localtime.stat.islnk is defined and not localtime.stat.islnk)
 
 - name: install NTP packages
-  apt: name={{ item }} state=installed
+  apt: name={{ item }} state=present
   with_items:
    - openntpd
   when: ntp.servers is defined

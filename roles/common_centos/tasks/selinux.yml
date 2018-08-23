@@ -1,7 +1,7 @@
 ---
 
 - name: install SELinux packages
-  yum: name={{ item }} state=installed
+  yum: name={{ item }} state=present
   with_items:
    - policycoreutils-python
 

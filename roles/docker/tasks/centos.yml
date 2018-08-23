@@ -1,7 +1,7 @@
 ---
 
 - name: Install dependencies
-  yum: name={{ item }} state=installed
+  yum: name={{ item }} state=present
   with_items:
     - yum-utils
     - device-mapper-persistent-data
@@ -16,7 +16,7 @@
     gpgkey: https://download.docker.com/linux/centos/gpg
 
 - name: Install Docker CE
-  yum: name={{ item }} state=installed update_cache=yes
+  yum: name={{ item }} state=present update_cache=yes
   with_items:
     - docker-ce
 
