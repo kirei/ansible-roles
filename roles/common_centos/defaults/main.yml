@@ -29,6 +29,7 @@
 #yum:
 #  cron:
 #    update_cmd: security
+#    emit_via: email
 #    email_from: root@example.com
 #    email_to: root@example.com
 
