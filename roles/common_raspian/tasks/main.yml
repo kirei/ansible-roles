@@ -1,0 +1,8 @@
+---
+
+- include: packages.yml
+- include: ssh.yml
+- include: ntp.yml
+- include: users.yml
+- include: wifi.yml
+  when: wifi is defined

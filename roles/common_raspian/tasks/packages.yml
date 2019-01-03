@@ -1,0 +1,13 @@
+---
+
+- name: install common RPI packages
+  apt: name={{ item }} state=present
+  with_items:
+   - rpi-update
+   - net-tools
+   - telnet
+   - tcpdump
+   - vim
+   - git
+   - rsync
+   - tmux

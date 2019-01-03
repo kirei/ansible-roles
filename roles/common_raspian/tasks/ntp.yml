@@ -1,0 +1,4 @@
+---
+
+- name: set timezone
+  file: src="../usr/share/zoneinfo/{{ntp.timezone}}" dest="/etc/localtime" state=link force=yes
