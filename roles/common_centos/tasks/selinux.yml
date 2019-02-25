@@ -1,9 +1,11 @@
 ---
 
 - name: install SELinux packages
-  yum: name={{ item }} state=present
-  with_items:
-   - policycoreutils-python
+  yum:
+    name:
+      - policycoreutils-python
+      - setools-console
+    state: present
 
 - name: enable SELinux
   selinux:

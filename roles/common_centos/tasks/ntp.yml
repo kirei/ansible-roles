@@ -5,9 +5,7 @@
   when: ntp.timezone is defined
 
 - name: install NTP packages
-  yum: name={{ item }} state=present
-  with_items:
-   - chrony
+  yum: name=chrony state=present
   when: ntp.servers is defined
 
 - name: configure NTP

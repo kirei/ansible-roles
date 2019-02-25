@@ -1,9 +1,11 @@
 ---
 
 - name: install common packages
-  yum: name={{ item }} state=present
-  with_items:
-   - net-tools
-   - tcpdump
-   - vim-enhanced
-   - epel-release
+  yum:
+    name:
+      - htop
+      - net-tools
+      - tcpdump
+      - vim-enhanced
+      - epel-release
+    state: present

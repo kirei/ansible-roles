@@ -1,14 +1,16 @@
 ---
 
 - name: install mail packages
-  yum: name={{ item }} state=present
-  with_items:
-   - mailx
+  yum:
+    name:
+     - mailx
+    state: present
 
 - name: install mail packages
-  yum: name={{ item }} state=present
-  with_items:
-   - postfix
+  yum:
+    name:
+     - postfix
+    state: present
   when: postfix is defined
 
 - name: install postfix config
