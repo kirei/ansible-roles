@@ -1,0 +1,10 @@
+---
+
+- name: install dnf-automatic
+  yum: name=dnf-automatic state=present
+
+- name: configure dnf-automatic
+  template: src="dnf/automatic.conf" dest="/etc/dnf/automatic.conf" mode=444
+
+- name: enable dnf-automatic.timer
+  service: name=dnf-automatic.timer enabled=yes
