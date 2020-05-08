@@ -13,7 +13,8 @@
   shell: augenrules
 
 - name: reload auditd
-  service: name=auditd state=reloaded
+  #service: name=auditd state=reloaded
+  shell: service auditd reload
 
 - name: reload firewalld
   shell: firewall-cmd --reload

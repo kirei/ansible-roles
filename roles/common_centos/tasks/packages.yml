@@ -1,5 +1,12 @@
 ---
 
+- name: install EPEL
+  yum:
+    name:
+      - epel-release
+    state: present
+  when: ansible_distribution == "CentOS"
+
 - name: install common packages
   yum:
     name:
@@ -7,5 +14,4 @@
       - net-tools
       - tcpdump
       - vim-enhanced
-      - epel-release
     state: present

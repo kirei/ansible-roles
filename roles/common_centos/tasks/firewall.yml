@@ -6,6 +6,15 @@
      - firewalld
      - python-firewall
     state: present
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+- name: install firewalld
+  yum:
+    name:
+     - firewalld
+     - python3-firewall
+    state: present
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8"
 
 - name: start firewalld
   service: name=firewalld state=started enabled=yes

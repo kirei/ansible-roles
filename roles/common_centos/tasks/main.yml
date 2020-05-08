@@ -2,13 +2,22 @@
 
 - include_tasks: packages.yml
 - include_tasks: sudo.yml
+  when: sudo is defined
 - include_tasks: users.yml
+  when: users is defined
 - include_tasks: selinux.yml
 - include_tasks: firewall.yml
 - include_tasks: ssh.yml
 - include_tasks: syslog.yml
 - include_tasks: ntp.yml
 - include_tasks: mail.yml
+
+
 - include_tasks: yum.yml
-  when: yum is defined
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7" and yum is defined
+- include_tasks: dnf.yml
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8" and dnf is defined
+- include_tasks: dnf.yml
+  when: ansible_distribution == "Fedora" and dnf is defined
+
 - include_tasks: audit.yml

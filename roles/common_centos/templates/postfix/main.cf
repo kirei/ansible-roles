@@ -1,6 +1,8 @@
 # postfix main.cf
 
+{% if postfix.myorigin is defined %}
 myorigin = {{postfix.myorigin}}
+{% endif %}
 {% if postfix.relayhost is defined %}
 relayhost = [{{postfix.relayhost}}]
 {% endif %}
